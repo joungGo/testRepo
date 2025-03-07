@@ -1,0 +1,15 @@
+# local ??
+spring:
+  profiles:
+    default: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/testdb
+    username: root
+    password: 0706
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    # Dialect ?? ??
+    database-platform: org.hibernate.dialect.MySQLDialect
