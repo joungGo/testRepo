@@ -29,11 +29,12 @@ public class RedisCacheConfig {
                 // Redis에 Value를 저장할 때 Json으로 직렬화(변환)해서 저장
                 .serializeValuesWith(
                         RedisSerializationContext.SerializationPair.fromSerializer(
-                                new Jackson2JsonRedisSerializer<Object>(Object.class)
+//                                new GenericJackson2JsonRedisSerializer() // 클래스 이름까지 직렬화시킴
+                                new Jackson2JsonRedisSerializer<Object>(Object.class) // json 만 직렬화 시킴
                         )
                 )
                 // 데이터의 만료기간(TTL) 설정
-                .entryTtl(Duration.ofMinutes(1L)); // TTL: 1분 = 1분마다 데이터 갱신 희망
+                .entryTtl(Duration.ofMinutes(10L)); // TTL: 1분 = 1분마다 데이터 갱신 희망
 
         return RedisCacheManager
                 .RedisCacheManagerBuilder
